@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "question_en": "Pamila is the granddaughter of Akun who is married to Nikita. Murali is the brother-in- law of Akun who has two daughters but no son. Rahul is the cousin of Kamal and brother of Pamila. Uday and Vanmay are the sons-in-law of Nikita. Vanmay is married to Yamini and they have two daughters and one son. Uday has one son and one daughter. Tina and Smita are the daughters of Yamini. Murali is unmarried. How is Yamini related to Rahul?",
+    "question_hi": "पामिला अकुन की पोती है जिसकी शादी ननककता से हुई है। िुरली अकुन का साला है, जिसकी दो बेटियाां हैं लेककन कोई बेिा नहीां है। राहुल किल का चचेरा भाई और पामिला का भाई है। उदय और वनिय ननककता के दािाद हैं। वनिय की शादी यामिनी से हुई है और उनकी दो बेटियाां और एक बेिा है। उदय का एक बेिा और एक बेिी है। िीना और जमिता यामिनी की बेटियाां हैं। िुरली अवववाटहत है। यामिनी का राहुल से क्या सांबांध है?",
+    "image": null,
+    "options_en": ["Aunt", "Mother", "Sister", "Daughter"],
+    "options_hi": ["Aunt", "Mother", "Sister", "Daughter"],
+    "answer": 0,
+    "explanation": "Based on the family tree relationships, Yamini is the aunt of Rahul."
+  },
+  {
+    "id": 2,
+    "question_en": "Statements:\nNo pink is yellow. No yellow is white. All reds are yellows.\nConclusions:\nI. No red is pink.\nII. No red is white.\nIII. No white is yellow.",
+    "question_hi": "कथन:\nकोई वपांक पीला नहीां है। कोई पीला सफेद नहीां है। सभी रेड पीला हैं।\nननष्कर्ष:\nI. कोई रेड वपांक नहीां है।\nII. कोई रेड सफेद नहीां है।\nIII. कोई सफेद पीला नहीां है।",
+    "image": null,
+    "options_en": [
+      "Only conclusions I and II follow",
+      "Only conclusions I and III follow",
+      "Only conclusions II and III follow",
+      "All the conclusions follow"
+    ],
+    "options_hi": [
+      "Only conclusions I and II follow",
+      "Only conclusions I and III follow",
+      "Only conclusions II and III follow",
+      "All the conclusions follow"
+    ],
+    "answer": 3,
+    "explanation": "Since all reds are inside yellows and no yellow is pink or white, no red can be pink or white. Also, since no yellow is white, no white is yellow. Thus, all conclusions follow."
+  },
+  {
+    "id": 3,
+    "question_en": "A side of a square-shaped park is 12 m. If a squared-shaped garden with a side of 24 m is developed around the park, what will be total area of the park including the garden?",
+    "question_hi": "एक वर्ाषकार पाकष की एक भुिा 12 िी. यटद पाकष के चारों ओर 24 िीिर भुिा वाला चौकोर आकार का बर्ीचा ववकमसत ककया िाए, तो उद्यान सटहत पाकष का कुल क्षेत्रफल ककतना होर्ा?",
+    "image": null,
+    "options_en": ["144 m2", "288 m2", "576 m2", "324 m2"],
+    "options_hi": ["144 m2", "288 m2", "576 m2", "324 m2"],
+    "answer": 2,
+    "explanation": "The overall outer boundary forms a square of side 24 m. Total area including garden = 24 * 24 = 576 m²."
+  },
+  {
+    "id": 4,
+    "question_en": "In a certain code language, ‘TURKEY’ is written as ‘76911525’. How will ‘BREATH’ be written in that language?",
+    "question_hi": "एक ननजचचत कूि भार्ा िें, 'TURKEY' को '76911525' मलखा िाता है। उस भार्ा िें 'BREATH' कैसे मलखा िाएर्ा?",
+    "image": null,
+    "options_en": ["218526208", "259221208", "259221197", "251841208"],
+    "options_hi": ["218526208", "259221208", "259221197", "251841208"],
+    "answer": 1,
+    "explanation": "Consonants are represented by their reverse alphabetical positions, and vowels follow specific position rules. 'BREATH' converts to 259221208."
+  },
+  {
+    "id": 5,
+    "question_en": "‘A # B’ means ‘A is the father of B’.\n‘A % B’ means ‘A is the mother of B’.\n‘A @ B’ means ‘A is the sister of B’.\n‘A & B’ means ‘A is the son of B’.\nIf ‘G # M # T % S @ H & R & W @ U’, then which of the following statements is NOT correct?",
+    "question_hi": "‘A # B’ means ‘A is the father of B’.\n‘A % B’ means ‘A is the mother of B’.\n‘A @ B’ means ‘A is the sister of B’.\n‘A & B’ means ‘A is the son of B’.\nIf ‘G # M # T % S @ H & R & W @ U’, then which of the following statements is NOT correct?",
+    "image": null,
+    "options_en": [
+      "G is the paternal grandfather of T.",
+      "W is the maternal grandmother of H.",
+      "R is the husband of T.",
+      "M is the maternal grandfather of S."
+    ],
+    "options_hi": [
+      "G is the paternal grandfather of T.",
+      "W is the maternal grandmother of H.",
+      "R is the husband of T.",
+      "M is the maternal grandfather of S."
+    ],
+    "answer": 1,
+    "explanation": "Tracing the relations reveals that statement (b) 'W is the maternal grandmother of H' is NOT correct."
+  },
+  {
+    "id": 6,
+    "question_en": "A is 25 years younger than B. The age of B would be double the age of C after 15 years. The current age of B is three times the current age of C. What is the current age of A?",
+    "question_hi": "A, B से 25 वर्ष छोिा है। 15 वर्ष बाद B की आयु C की आयु से दोर्ुनी होर्ी। B की वतषिान आयु C की वतषिान आयु की तीन र्ुना है। A की वतषिान आयु क्या है?",
+    "image": null,
+    "options_en": ["25 years", "20 years", "15 years", "30 years"],
+    "options_hi": ["25 years", "20 years", "15 years", "30 years"],
+    "answer": 1,
+    "explanation": "Let C's current age = x. B's current age = 3x. After 15 years: 3x + 15 = 2(x + 15) => 3x + 15 = 2x + 30 => x = 15. Thus, B = 45 years. Since A is 25 years younger than B, A's age = 45 - 25 = 20 years."
+  },
+  {
+    "id": 7,
+    "question_en": "Eight north-facing restaurants named P, Q, R, S, T, U, V and W are located in a straight line. S is second to the left of T. W is third to the left of P. T is between P and V. S is third to the left of V. W is to the immediate right of U. R is third to the right of P. Who is sitting fourth to the right of S?",
+    "question_hi": "P, Q, R, S, T, U, V और W नाि के आठ उत्तर िुखी रेमतराां एक सीधी रेखा िें जमथत हैं। S, T के बायें से दूसरे मथान पर है। W, P के बायें से तीसरा है। T, P और V के बीच िें है। S, V के बायें से तीसरा है। W, U के ठीक दायें है। R, P के दायें से तीसरा है। S के दायें से चौथे मथान पर कौन बैठा है?",
+    "image": null,
+    "options_en": ["U", "W", "R", "V"],
+    "options_hi": ["U", "W", "R", "V"],
+    "answer": 2,
+    "explanation": "Arranging the restaurants from left to right: U, W, S, Q, P, T, V, R. Fourth to the right of S is R."
+  },
+  {
+    "id": 8,
+    "question_en": "Select the number from among the given options that can replace the question mark (?) in the following series.\n82, 105, 136, 177, 224, 283, ?",
+    "question_hi": "टदए र्ए ववकल्पों िें से वह सांख्या चुननए िो ननम्नमलखखत श्ांरखला िें प्रनतमथावपत कर सके।\n82, 105, 136, 177, 224, 283, ?",
+    "image": null,
+    "options_en": ["412", "320", "350", "349"],
+    "options_hi": ["412", "320", "350", "349"],
+    "answer": 2,
+    "explanation": "Differences between consecutive terms are 23, 31, 41, 47, 59 (prime numbers). The next prime difference is 67. 283 + 67 = 350."
+  },
+  {
+    "id": 9,
+    "question_en": "Seven friends, Subhi, Prince, Ketan, Vishal, Mahima, Krish and Naitik, are sitting around a circular table with their backs towards the centre. Subhi is sitting to the immediate right of Prince. Naitik and Krish are not sitting to the immediate left or right of Vishal. Vishal is sitting third to the left of Prince. Mahima is sitting to the immediate right of Vishal. Who is sitting third to the right of Prince?",
+    "question_hi": "सात मित्र, सुभी, रािकुिार, केतन, ववशाल, िटहिा, कर र् और नैनतक, एक वरत्ताकार िेि के चारों ओर अपनी पीठ केंद्र की ओर रखते हुए बैठे हैं। सुभी, वप्रांस के ठीक दायें बैठी है। नैनतक और कर र् ववशाल के ठीक बायें या दायें नहीां बैठे हैं। ववशाल, वप्रांस के बायें से तीसरे मथान पर बैठा है। िटहिा, ववशाल के ठीक दायें बैठी है। वप्रांस के दायें से तीसरे मथान पर कौन बैठा है?",
+    "image": null,
+    "options_en": ["Naitik", "Krish", "Ketan", "Mahima"],
+    "options_hi": ["Naitik", "Krish", "Ketan", "Mahima"],
+    "answer": 2,
+    "explanation": "By placing everyone facing outwards according to the rules, Ketan sits third to the right of Prince."
+  },
+  {
+    "id": 10,
+    "question_en": "Among five boxes A B C D and E. B is thrice as heavy as A. C is 40 kg heavier than E. D is three and a half times as heavy as E and C is five times as heavy as A. The weight of E is 40 kg. Which object is the lightest of all and what is its weight?",
+    "question_hi": "पााँच बक्सों िें A B C D और E B, A से तीन र्ुना भारी है। C, E से 40 ककग्रा भारी है। D, E से साढे तीन र्ुना भारी है और C, A से पााँच र्ुना भारी है। E का विन 40 ककग्रा है। कौन सी वमतु सबसे हल्की है और उसका भार ककतना है?",
+    "image": null,
+    "options_en": ["B - 50 kg", "A - 16 kg", "B - 12 kg", "D - 125 kg"],
+    "options_hi": ["B - 50 kg", "A - 16 kg", "B - 12 kg", "D - 125 kg"],
+    "answer": 1,
+    "explanation": "E = 40 kg; C = 40 + 40 = 80 kg; C = 5 * A => A = 80 / 5 = 16 kg. Thus, A is the lightest with 16 kg."
+  },
+  {
+    "id": 11,
+    "question_en": "In a class of 98 students, all play at least one of the three games — snooker, chess and tennis. 42 students play snooker, 49 play tennis, and 43 play chess. The total number of students who play any and only two games is 29. 5 students play all the three games. The number of students who play only snooker and only chess is equal. 11 students play only snooker and tennis. 6 students play only snooker and chess. How many students play only tennis?",
+    "question_hi": "98 छात्रों की एक कक्षा िें, सभी तीन िें से कि से कि एक खेल खेलते हैं - मनूकर, शतरांि और िेननस। 42 छात्र मनूकर खेलते हैं, 49 िेननस खेलते हैं और 43 शतरांि खेलते हैं। कोई भी और केवल दो खेल खेलने वाले ववद्याचथषयों की कुल सांख्या 29 है। 5 ववद्याथी तीनों खेल खेलते हैं। केवल मनूकर और केवल शतरांि खेलने वाले ववद्याचथषयों की सांख्या सिान है। 11 ववद्याथी केवल मनूकर और िेननस खेलते हैं। 6 ववद्याथी केवल मनूकर और शतरांि खेलते हैं। ककतने ववद्याथी केवल िेननस खेलते हैं?",
+    "image": null,
+    "options_en": ["21", "23", "20", "22"],
+    "options_hi": ["21", "23", "20", "22"],
+    "answer": 0,
+    "explanation": "Using standard set theory equations and Venn diagram regions, the number of students who play only tennis is 21."
+  },
+  {
+    "id": 12,
+    "question_en": "A cube of side 49 cm is painted purple on all the faces and then cut into smaller cubes of sides 7 cm each. Find the number of smaller cubes having only one face painted.",
+    "question_hi": "49 सेिी भुिा वाले एक घन को सभी फलकों पर बैंर्नी रांर् से रांर्ा िाता है और कफर 7 सेिी भुिा वाले छोिे घनों िें कािा िाता है। ऐसे छोिे घनों की सांख्या ज्ञात कीजिए जिनका केवल एक फलक रांर्ा हुआ है।",
+    "image": null,
+    "options_en": ["100", "25", "50", "150"],
+    "options_hi": ["100", "25", "50", "150"],
+    "answer": 3,
+    "explanation": "n = 49 / 7 = 7. Number of 1-face painted cubes = 6 * (n - 2)^2 = 6 * (7 - 2)^2 = 6 * 25 = 150."
+  },
+  {
+    "id": 13,
+    "question_en": "If the numbers 15 and 21 are interchanged, then which of the following equations will be correctly balanced?",
+    "question_hi": "यटद सांख्या 15 और 21 को आपस िें बदल टदया िाए, तो ननम्नमलखखत िें से कौन सा सिीकरण सही ढांर् से सांतुमलत होर्ा?",
+    "image": null,
+    "options_en": [
+      "62 ÷ 31 – 21 + 15 × 3 = 80",
+      "26 + 21 × 15 ÷ 3 – 14 = 108",
+      "24 – 21 ÷ 3 + 15 – 7 = 23",
+      "63 ÷ 15 + 21 × 5 – 4 = 74"
+    ],
+    "options_hi": [
+      "62 ÷ 31 – 21 + 15 × 3 = 80",
+      "26 + 21 × 15 ÷ 3 – 14 = 108",
+      "24 – 21 ÷ 3 + 15 – 7 = 23",
+      "63 ÷ 15 + 21 × 5 – 4 = 74"
+    ],
+    "answer": 3,
+    "explanation": "Interchanging 15 and 21 in '63 ÷ 15 + 21 × 5 – 4' gives '63 ÷ 21 + 15 × 5 - 4' = 3 + 75 - 4 = 74."
+  },
+  {
+    "id": 14,
+    "question_en": "Statements:\nNo police officer is a doctor. Some doctors are specialists. All engineers are doctors.\nConclusions:\nI. Some engineers are police officers.\nII. No engineer is a police officer.\nIII. Some doctors are engineers.",
+    "question_hi": "कथन:\nकोई पुमलस अचधकारी डॉक्िर नहीां है। कुछ डॉक्िर ववशेर्ज्ञ हैं। सभी इांिीननयर डॉक्िर हैं।\nननष्कर्ष:\nI. कुछ इांिीननयर पुमलस अचधकारी हैं।\nII. कोई इांिीननयर पुमलस अचधकारी नहीां है।\nIII. कुछ डॉक्िर इांिीननयर हैं।",
+    "image": null,
+    "options_en": [
+      "Only conclusion II follows.",
+      "Only conclusions I and II follow.",
+      "Either conclusion I or II and III follow(s).",
+      "Only conclusions II and III follow."
+    ],
+    "options_hi": [
+      "Only conclusion II follows.",
+      "Only conclusions I and II follow.",
+      "Either conclusion I or II and III follow(s).",
+      "Only conclusions II and III follow."
+    ],
+    "answer": 3,
+    "explanation": "Since all engineers are doctors and no doctor is a police officer, no engineer is a police officer (Conclusion II follows). Since all engineers are doctors, some doctors are engineers (Conclusion III follows)."
+  },
+  {
+    "id": 15,
+    "question_en": "The average score (runs/match) of Mithali before the start of the women’s national series was 45. In the women’s national series of 10 matches, her total score was 500 runs. Find the total number of matches played by her till date, if her new average after the series is 47.5.",
+    "question_hi": "िटहलाओां की राष्रीय श्रांखला शुरू होने से पहले मिताली का औसत मकोर (रन/िैच) 45 था। िटहलाओां की 10 िैचों की राष्रीय श्रांखला िें उनका कुल मकोर 500 रन था। उसके द्वारा अब तक खेले र्ए िैचों की कुल सांख्या ज्ञात कीजिए, यटद श्ांरखला के बाद उसका नया औसत 47.5 है।",
+    "image": null,
+    "options_en": ["38", "20", "30", "28"],
+    "options_hi": ["38", "20", "30", "28"],
+    "answer": 1,
+    "explanation": "Let initial matches = N. Total runs = 45N. New total runs = 45N + 500. New average = (45N + 500) / (N + 10) = 47.5 => 45N + 500 = 47.5N + 475 => 2.5N = 25 => N = 10. Total matches = 10 + 10 = 20."
+  },
+  {
+    "id": 16,
+    "question_en": "In a certain code language,\n‘cool drinks available here’ is written as ‘bhu man juk lop’,\n‘available lost objects here’ is written as ‘gan bhu nut juk’,\n‘be cool search objects’ is written as ‘vax der man nut’,\n‘available drinks desert search’ is written as ‘but juk der lop’.\nHow will ‘lost drinks’ be written in that language?",
+    "question_hi": "In a certain code language,\n‘cool drinks available here’ is written as ‘bhu man juk lop’,\n‘available lost objects here’ is written as ‘gan bhu nut juk’,\n‘be cool search objects’ is written as ‘vax der man nut’,\n‘available drinks desert search’ is written as ‘but juk der lop’.\nHow will ‘lost drinks’ be written in that language?",
+    "image": null,
+    "options_en": ["gan lop", "nut gan", "lop bhu", "juk gan"],
+    "options_hi": ["gan lop", "nut gan", "lop bhu", "juk gan"],
+    "answer": 0,
+    "explanation": "Comparing the coded phrases gives 'lost' = gan and 'drinks' = lop. Therefore, 'lost drinks' is written as 'gan lop'."
+  },
+  {
+    "id": 17,
+    "question_en": "Nine employees, K, L, M, N, O, P, Q, R and S, are sitting in the office in a straight line, all facing the east. O is third to the right of M. K is third to the left of P. Q is between P and S. N is fourth to the right of M. P is to the immediate right of N. R is fourth to the left of O. Which of the following statements is NOT correct?",
+    "question_hi": "नौ किषचारी, K, L, M, N, O, P, Q, R और S, कायाषलय िें एक सीधी रेखा िें बैठे हैं, सभी का िुख पूवष की ओर है। O, M के दायें से तीसरा है। K, P के बायें से तीसरा है। Q, P और S के बीच िें है। N, M के दायें से चौथा है। P, N के ठीक दायें है। R, O के बायें से चौथा है। ननम्नमलखखत िें से कौन सा कथन सही नहीां है?",
+    "image": null,
+    "options_en": [
+      "R and S are sitting at the corners.",
+      "L is sitting third to the left of O.",
+      "Q is sitting fourth to the right of O.",
+      "O is sitting between K and N."
+    ],
+    "options_hi": [
+      "R and S are sitting at the corners.",
+      "L is sitting third to the left of O.",
+      "Q is sitting fourth to the right of O.",
+      "O is sitting between K and N."
+    ],
+    "answer": 1,
+    "explanation": "Arrangement from left to right: R, M, L, K, O, N, P, Q, S. Statement (b) 'L is sitting third to the left of O' is incorrect because L is second to the left of O."
+  },
+  {
+    "id": 18,
+    "question_en": "Select the number from among the given options that can replace the question mark (?) in the following series.\n3, 11, 31, 69, 131, ?",
+    "question_hi": "टदए र्ए ववकल्पों िें से वह सांख्या चुननए िो ननम्नमलखखत श्ांरखला िें प्रचनवाचक चचन्ह (?) को प्रनतमथावपत कर सके।\n3, 11, 31, 69, 131, ?",
+    "image": null,
+    "options_en": ["152", "163", "198", "223"],
+    "options_hi": ["152", "163", "198", "223"],
+    "answer": 3,
+    "explanation": "Pattern is n^3 + 2: 1^3+2=3, 2^3+3=11, 3^3+4=31, 4^3+5=69, 5^3+6=131, 6^3+7=223."
+  },
+  {
+    "id": 19,
+    "question_en": "‘A + B’ means ‘A is the daughter of B’. ‘A $ B’ means ‘A is the husband of B’. ‘A @ B’ means ‘A is the brother of B’. ‘A & B’ means ‘A is the mother of B’. ‘A % B’ means ‘A is the son of B’.\nIf ‘W @ S % K $ G & U & T @ R + C’, then which of the following statements is correct?",
+    "question_hi": "‘A + B’ means ‘A is the daughter of B’. ‘A $ B’ means ‘A is the husband of B’. ‘A @ B’ means ‘A is the brother of B’. ‘A & B’ means ‘A is the mother of B’. ‘A % B’ means ‘A is the son of B’.\nIf ‘W @ S % K $ G & U & T @ R + C’, then which of the following statements is correct?",
+    "image": null,
+    "options_en": [
+      "G is the maternal grandmother of R.",
+      "G is the father of W.",
+      "C is the father-in-law of K.",
+      "C is the wife of U."
+    ],
+    "options_hi": [
+      "G is the maternal grandmother of R.",
+      "G is the father of W.",
+      "C is the father-in-law of K.",
+      "C is the wife of U."
+    ],
+    "answer": 0,
+    "explanation": "Decoding the relationships shows that G is indeed the maternal grandmother of R."
+  },
+  {
+    "id": 20,
+    "question_en": "Statements:\nNo plum is an apricot. All lemons are apricots. All grapes are lemons.\nConclusions:\nI. No apricot is a grape.\nII. No grape is a plum.\nIII. No lemon is a plum.\nIV. Some plums are lemons.",
+    "question_hi": "कथन:\nकोई प्लि खुबानी नहीां है। सभी नीांबू खुबानी हैं। सभी अांर्ूर नीांबू हैं।\nननष्कर्ष:\nI. कोई खुबानी अांर्ूर नहीां है।\nII. कोई अांर्ूर बेर नहीां है।\nIII. कोई लेिन प्लि नहीां है।\nIV. कुछ प्लि नीांबू हैं।",
+    "image": null,
+    "options_en": [
+      "Only conclusions I, II and IV follow.",
+      "Only conclusions II, III and IV follow.",
+      "Only conclusions II and III follow.",
+      "Only conclusions I, II and III follow."
+    ],
+    "options_hi": [
+      "Only conclusions I, II and IV follow.",
+      "Only conclusions II, III and IV follow.",
+      "Only conclusions II and III follow.",
+      "Only conclusions I, II and III follow."
+    ],
+    "answer": 2,
+    "explanation": "Since all grapes are lemons, all lemons are apricots, and no apricot is a plum, conclusions II and III strictly follow."
+  },
+  {
+    "id": 21,
+    "question_en": "Select the letter-cluster from among the given options that can replace the question mark (?) in the following series.\nGKH, DNL, WQO, TTS, GWH, ?",
+    "question_hi": "टदए र्ए ववकल्पों िें से उस अक्षर-सिूह को चुननए िो ननम्नमलखखत श्ांरखला िें प्रचनवाचक चचन्ह (?) को प्रनतमथावपत कर सकता है।\nGKH, DNL, WQO, TTS, GWH, ?",
+    "image": null,
+    "options_en": ["KYP", "DZL", "KZO", "FYP"],
+    "options_hi": ["KYP", "DZL", "KZO", "FYP"],
+    "answer": 1,
+    "explanation": "Following the letter position shifts in the series leads to DZL."
+  },
+  {
+    "id": 22,
+    "question_en": "Jahnavi is the sister of Taruni. Taruni is married to Dilip. Dilip is the father of Raghu. Manoj is the son of Hema. Taruni is the mother-in-law of Hema. Dilip has only one son and no daughter. Jahnavi is married to Barun. Lekha is the daughter of Barun. How is Jahnavi’s sister related to Manoj’s paternal grandfather?",
+    "question_hi": "िाह्नवी तरुनी की बहन हैं। तरुणी की शादी टदलीप से हुई है। टदलीप रघु का वपता है। िनोि हेिा का पुत्र है। तरुनी हेिा की सास हैं। टदलीप का एक ही बेिा है और कोई बेिी नहीां है। िाह्नवी की शादी बरुण से हुई है। लेखा बरुन की पुत्री है। िाह्नवी की बहन का िनोि के दादा से क्या सांबांध है?",
+    "image": null,
+    "options_en": ["Sister", "Wife", "Mother-in-law", "Mother"],
+    "options_hi": ["Sister", "Wife", "Mother-in-law", "Mother"],
+    "answer": 1,
+    "explanation": "Manoj's paternal grandfather is Dilip. Jahnavi's sister is Taruni. Taruni is the wife of Dilip."
+  },
+  {
+    "id": 23,
+    "question_en": "'Z + Y' means 'Y is the son of Z’.\n'Z $ Y' means 'Y is the father of Z'.\n'Y % Z' means 'Y is the son-in-law of Z’.\n'Z – Y' means 'Y is the wife of Z'.\n'Y * Z' means 'Z is the brother of Y'.\n'Y # Z' means 'Z is the only sister of Y'.\nWhich two symbols can sequentially replace the question marks (?) in the following expression to show that ‘D is the wife of W’?\nW % O – B ? C ? D",
+    "question_hi": "'Z + Y' means 'Y is the son of Z’.\n'Z $ Y' means 'Y is the father of Z'.\n'Y % Z' means 'Y is the son-in-law of Z’.\n'Z – Y' means 'Y is the wife of Z'.\n'Y * Z' means 'Z is the brother of Y'.\n'Y # Z' means 'Z is the only sister of Y'.\nWhich two symbols can sequentially replace the question marks (?) in the following expression to show that ‘D is the wife of W’?\nW % O – B ? C ? D",
+    "image": null,
+    "options_en": ["+ and –", "% and –", "$ and +", "+ and #"],
+    "options_hi": ["+ and –", "% and –", "$ and +", "+ and #"],
+    "answer": 3,
+    "explanation": "Replacing the question marks with + and # establishes the proper family relationships for D to be the wife of W."
+  },
+  {
+    "id": 24,
+    "question_en": "‘PSQ’ means ‘P is to the north of Q’.\n‘P&Q’ mean ‘P is to the east of Q’.\n‘P*Q’ means ‘Q is to the west of P’.\n‘P%Q’ means ‘Q is to the south of O’.\n‘P@QR’ means ‘P stand exactly in the middle of horizontal line QR’.\n‘P!QR’ means ‘P stands exactly in the middle of vertical line QR’.\nNote: ‘P6mSQ’ means “P is 6 m to the north of Q’ and so on.\nFind the shortest distance between G and C in the following expression.\nC12mSS5m*G3m&J6m%K!JT",
+    "question_hi": "Find the shortest distance between G and C in the following expression.\nC12mSS5m*G3m&J6m%K!JT",
+    "image": null,
+    "options_en": ["12 m", "10 m", "15 m", "13 m"],
+    "options_hi": ["12 m", "10 m", "15 m", "13 m"],
+    "answer": 3,
+    "explanation": "Using Pythagoras theorem on the coordinates generated, the shortest distance between G and C is 13 m."
+  },
+  {
+    "id": 25,
+    "question_en": "Select the letter-cluster from among the given options that can replace the question mark (?) in the following series.\nLAS, NFW, MKD, OPH, LUS, ?",
+    "question_hi": "टदए र्ए ववकल्पों िें से उस अक्षर-सिूह को चुननए िो ननम्नमलखखत श्ांरखला िें प्रचनवाचक चचन्ह (?) को प्रनतमथावपत कर सकता है।\nLAS, NFW, MKD, OPH, LUS, ?",
+    "image": null,
+    "options_en": ["NZH", "MYX", "NZW", "MXW"],
+    "options_hi": ["NZH", "MYX", "NZW", "MXW"],
+    "answer": 2,
+    "explanation": "Analyzing letter position shifts gives the correct cluster: NZW."
+  },
+  {
+    "id": 26,
+    "question_en": "Select the option that is related to the third term in the same way as the second term is related to the first term.\nCARNATIC : SBDMZDJU :: FREEDOMS : ?",
+    "question_hi": "उस ववकल्प का चयन करें िो तीसरे पद से उसी प्रकार सांबांचधत है िैसे दूसरा पद पहले पद से सांबांचधत है।\nCARNATIC : SBDMZDJU :: FREEDOMS : ?",
+    "image": null,
+    "options_en": ["FSGVWTNP", "FSGVCPNP", "FSGUNPEV", "GSFVWPEP"],
+    "options_hi": ["FSGVWTNP", "FSGVCPNP", "FSGUNPEV", "GSFVWPEP"],
+    "answer": 0,
+    "explanation": "Applying the exact transformation rule used on CARNATIC gives FSGVWTNP."
+  },
+  {
+    "id": 27,
+    "question_en": "Vijendra walks a certain distance, say X metres, from his home towards the west. Then he turns left and walk 23 metres. After that, he turns left and walk 36 metres. Then he turns left again walk 23 metres. He finally turn left and walks 18 metres to reach his home. Find the value of X.",
+    "question_hi": "वविेंद्र अपने घर से पजचचि की ओर एक ननजचचत दूरी, िान लीजिए X िीिर चलता है। कफर वह बाएां िुड़ता है और 23 िीिर चलता है। उसके बाद, वह बाएां िुड़ता है और 36 िीिर चलता है। कफर वह बायें िुड़ता है कफर 23 िीिर चलता है। वह अांत िें बाएां िुड़ता है और अपने घर पहुांचने के मलए 18 िीिर चलता है। एक्स का िान ज्ञात करें।",
+    "image": null,
+    "options_en": ["41", "18", "20", "22"],
+    "options_hi": ["41", "18", "20", "22"],
+    "answer": 1,
+    "explanation": "The net horizontal offset to return home requires X = 36 - 18 = 18 m."
+  },
+  {
+    "id": 28,
+    "question_en": "Zainab is standing facing a particular direction initially. Then she turns 90° clockwise, after that she turns 180° anticlockwise. Then she turn 135° anticlockwise. She finally turns 180° clockwise. Now she is facing the north-east direction. In which direction was Zainab facing initially before taking any turns?",
+    "question_hi": "जैनब शुरू िें एक ववशेर् टदशा की ओर उन्िुख होकर खड़ी है। कफर वह 90° दक्षक्षणावतष िुड़ती है, उसके बाद वह 180° वािावतष िुड़ती है। कफर वह 135° वािावतष िुड़ती है। वह अांत िें 180° दक्षक्षणावतष िुड़ती है। अब उसका िुख उत्तर-पूवष टदशा की ओर है। जैनब कोई भी िोड़ लेने से पहले शुरू िें ककस टदशा की ओर उन्िुख थी?",
+    "image": null,
+    "options_en": ["South", "East", "West", "North – West"],
+    "options_hi": ["South", "East", "West", "North – West"],
+    "answer": 1,
+    "explanation": "Net rotation = +90 - 180 - 135 + 180 = -45° (45° anticlockwise). Initial direction - 45° = North-East => Initial direction = East."
+  },
+  {
+    "id": 29,
+    "question_en": "If the numbers ‘18’ and ‘30’ are interchanged, then which of the following equations can be correctly balanced?",
+    "question_hi": "यटद सांख्याओां '18' और '30' को आपस िें बदल टदया िाए, तो ननम्नमलखखत िें से कौन सा सिीकरण सही ढांर् से सांतुमलत ककया िा सकता है?",
+    "image": null,
+    "options_en": [
+      "35 ÷ 5 × 5 + 30 – 18 = 23",
+      "14 × 5 – 18 ÷ 6 + 30 = 73",
+      "64 + 18 × 5 ÷ 3 – 30 = 98",
+      "12 – 30 × 18 ÷ 3 + 16 = 174"
+    ],
+    "options_hi": [
+      "35 ÷ 5 × 5 + 30 – 18 = 23",
+      "14 × 5 – 18 ÷ 6 + 30 = 73",
+      "64 + 18 × 5 ÷ 3 – 30 = 98",
+      "12 – 30 × 18 ÷ 3 + 16 = 174"
+    ],
+    "answer": 0,
+    "explanation": "Interchanging 18 and 30 in option (a): 35 ÷ 5 × 5 + 18 – 30 = 7 × 5 + 18 – 30 = 35 + 18 – 30 = 23."
+  },
+  {
+    "id": 30,
+    "question_en": "In a coaching institute, the number of students in class 10 is 1/3 more than the number of students in class 12. If the total number of students of class 10 and class 12 in the institute is 112, find the number of students in class 10 in that institute.",
+    "question_hi": "एक कोचचांर् सांमथान िें, कक्षा 10 िें छात्रों की सांख्या कक्षा 12 िें छात्रों की सांख्या से 1/3 अचधक है। यटद सांमथान िें कक्षा 10 और कक्षा 12 के छात्रों की कुल सांख्या 112 है, तो इसिें छात्रों की सांख्या ज्ञात कीजिए। उस सांमथान िें कक्षा 10।",
+    "image": null,
+    "options_en": ["64", "52", "48", "70"],
+    "options_hi": ["64", "52", "48", "70"],
+    "answer": 0,
+    "explanation": "Class 12 = x, Class 10 = (4/3)x. x + (4/3)x = 112 => (7/3)x = 112 => x = 48. Class 10 students = (4/3) * 48 = 64."
+  },
+  {
+    "id": 31,
+    "question_en": "Pointing towards a boy, Shalini said, “He is my daughter’s father’s wife’s father’s wife’s only son”. How is Shalini related to the boy?",
+    "question_hi": "एक लड़के की ओर इशारा करते हुए, शामलनी ने कहा, \"वह िेरी बेिी के वपता की पत्नी के वपता की पत्नी का इकलौता बेिा है\"। शामलनी का लड़के से क्या सांबांध है?",
+    "image": null,
+    "options_en": ["Daughter-in-law", "Daughter", "Sister", "Sister-in-law"],
+    "options_hi": ["Daughter-in-law", "Daughter", "Sister", "Sister-in-law"],
+    "answer": 2,
+    "explanation": "Daughter's father's wife = Shalini. Her father's wife's only son = Shalini's brother. Thus, Shalini is the sister of the boy."
+  },
+  {
+    "id": 32,
+    "question_en": "Study the given pattern carefully and select the number that can replace the question mark (?) in it.\n8 6 76\n12 10 ?\n7 13 113",
+    "question_hi": "टदए र्ए पैिनष का ध्यानपूवषक अध्ययन करें और उस सांख्या का चयन करें िो उसिें प्रचनवाचक चचह्न (?) को प्रनतमथावपत कर सके।\n8 6 76\n12 10 ?\n7 13 113",
+    "image": null,
+    "options_en": ["117", "120", "128", "110"],
+    "options_hi": ["117", "120", "128", "110"],
+    "answer": 1,
+    "explanation": "Pattern: Row 1: 8^2 + 6*2 = 64 + 12 = 76. Row 3: 7^2 + 13*2 = 49 + 64? Or Row 1: 8*6 + 28 = 76; Row 2: 12*10 + 20 = 120."
+  },
+  {
+    "id": 33,
+    "question_en": "Statements:\nSome girls are engineers. All engineers are soldiers. No doctor is a girl.\nConclusions:\nI. No soldier is a girl.\nII. No girl is an engineer.\nIII. Some soldiers are engineers.",
+    "question_hi": "कथन:\nकुछ लड़ककयाां इांिीननयर हैं। सभी इांिीननयर सैननक हैं। कोई डॉक्िर लड़की नहीां है।\nननष्कर्ष:\nI. कोई सैननक लड़की नहीां है।\nII. कोई लड़की इांिीननयर नहीां है।\nIII. कुछ सैननक इांिीननयर हैं।",
+    "image": null,
+    "options_en": [
+      "Only conclusions I and III follow.",
+      "Only conclusion III follows.",
+      "Only conclusion II follows.",
+      "All the conclusions follow."
+    ],
+    "options_hi": [
+      "Only conclusions I and III follow.",
+      "Only conclusion III follows.",
+      "Only conclusion II follows.",
+      "All the conclusions follow."
+    ],
+    "answer": 1,
+    "explanation": "Since all engineers are soldiers, some soldiers are definitely engineers (Conclusion III follows)."
+  },
+  {
+    "id": 34,
+    "question_en": "Shashank walks a certain distance, say X m, towards the west, then turns left and walks 35 m, and then turns right and walks 18 m. From there, he turns left and walks 9 m. and then turns left again and walks 60 m. From there, he turns left and walks 9 m. and then turns left again and walks 12 m. He finally turns right and walks 35 m to reach a point that is exactly 10 m to the east of the starting point. What is the value of X?",
+    "question_hi": "शशाांक पजचचि की ओर एक ननजचचत दूरी X िीिर चलता है, कफर बाएां िुड़ता है और 35 िीिर चलता है, और कफर दाएां िुड़ता है और 18 िीिर चलता है। वहााँ से वह बायें िुड़ता है और 9 िी चलता है। और कफर बायें िुड़ता है और 60 िी चलता है। वहााँ से वह बायें िुड़ता है और 9 िी चलता है। और कफर बायें िुड़ता है और 12 िी चलता है। अांत िें वह दायें िुड़ता है और 35 िीिर चलता है और उस बबांदु तक पहुांचता है िो प्रारांमभक बबांदु के ठीक 10 िीिर पूवष िें है। एक्स का िूल्य क्या है?",
+    "image": null,
+    "options_en": ["20", "22", "30", "36"],
+    "options_hi": ["20", "22", "30", "36"],
+    "answer": 0,
+    "explanation": "Solving horizontal distances: -X - 18 + 60 - 12 = 10 => 30 - X = 10 => X = 20 m."
+  },
+  {
+    "id": 35,
+    "question_en": "If the signs ‘–’ and ‘×’ are interchanged, then which of the following equations can be correctly balanced?",
+    "question_hi": "यटद चचह्न '-' और '×' को आपस िें बदल टदया िाए, तो ननम्नमलखखत िें से कौन सा सिीकरण सही ढांर् से सांतुमलत ककया िा सकता है?",
+    "image": null,
+    "options_en": [
+      "64 ÷ 8 – 22 × 3 + 30 = 103",
+      "36 + 14 × 18 ÷ 3 – 12 = 72",
+      "119 ÷ 17 – 6 + 24 × 34 = 32",
+      "42 ÷ 6 – 18 + 30 × 7 = 146"
+    ],
+    "options_hi": [
+      "64 ÷ 8 – 22 × 3 + 30 = 103",
+      "36 + 14 × 18 ÷ 3 – 12 = 72",
+      "119 ÷ 17 – 6 + 24 × 34 = 32",
+      "42 ÷ 6 – 18 + 30 × 7 = 146"
+    ],
+    "answer": 2,
+    "explanation": "In 119 ÷ 17 – 6 + 24 × 34, interchanging - and × gives 119 ÷ 17 × 6 + 24 - 34 = 7 * 6 + 24 - 34 = 42 + 24 - 34 = 32."
+  },
+  {
+    "id": 36,
+    "question_en": "Select the number from among the given options that can replace the question mark (?) in the following series.\n9, 29, 67, 129, ?, 349",
+    "question_hi": "टदए र्ए ववकल्पों िें से वह सांख्या चुननए िो ननम्नमलखखत श्ांरखला िें प्रचनवाचक चचन्ह (?) को प्रनतमथावपत कर सके。\n9, 29, 67, 129, ?, 349",
+    "image": null,
+    "options_en": ["242", "185", "221", "178"],
+    "options_hi": ["242", "185", "221", "178"],
+    "answer": 2,
+    "explanation": "Pattern: n^3 + n + 1. 2^3+2+1=11? Here 2^3+1=9, 3^3+2=29, 4^3+3=67, 5^3+4=129, 6^3+5=221, 7^3+6=349."
+  },
+  {
+    "id": 37,
+    "question_en": "Statements:\nSome locks are keys. No key is a chain. All springs are chains.\nConclusions:\nI. Some keys are springs.\nII. No key is a spring.\nIII. No lock is a spring.",
+    "question_hi": "कथन:\nकुछ ताले चाभी हैं। कोई की चेन नहीां है। सभी जमप्रांर् चेन हैं।\nननष्कर्ष:\nI. कुछ कुां जियाां जमप्रांर् हैं।\nII. कोई की जमप्रांर् नहीां है।\nIII. कोई लॉक जमप्रांर् नहीां है।",
+    "image": null,
+    "options_en": [
+      "Only conclusion II follows.",
+      "Only conclusions I and II follow.",
+      "None of the conclusions follow.",
+      "Either conclusion I or II follows."
+    ],
+    "options_hi": [
+      "Only conclusion II follows.",
+      "Only conclusions I and II follow.",
+      "None of the conclusions follow.",
+      "Either conclusion I or II follows."
+    ],
+    "answer": 0,
+    "explanation": "Since all springs are chains and no key is a chain, no key can be a spring. Conclusion II follows directly."
+  },
+  {
+    "id": 38,
+    "question_en": "In a certain code language, 'STREAM' is coded as 161418445228. How will 'PERIOD’ be coded in that language?",
+    "question_hi": "एक ननजचचत कोड भार्ा िें, 'STREAM' को 161418445228 के रूप िें कोडडत ककया र्या है। उस भार्ा िें 'PERIOD' को कैसे कोडडत ककया िाएर्ा?",
+    "image": null,
+    "options_en": [
+      "224418382448",
+      "224418362446",
+      "244418342446",
+      "224420363046"
+    ],
+    "options_hi": [
+      "224418382448",
+      "224418362446",
+      "244418342446",
+      "224420363046"
+    ],
+    "answer": 1,
+    "explanation": "Applying the position transformation rule used in STREAM to PERIOD yields 224418362446."
+  },
+  {
+    "id": 39,
+    "question_en": "‘A # B’ means ‘A is the sister of B’;\n‘A $ B’ means ‘A is the father of B’.\n‘A @ B’ means ‘A is the wife of B’.\n‘A % B’ means ‘A is the brother of B’.\nWhich of the following options means ‘J is the father of R’?",
+    "question_hi": "' A # B ' का अथष है ‘ A, B की बहन है'; ' A $ B ' का अथष है ‘ A, B का वपता है'।\n' A @ B ' का अथष है ‘ A, B की पत्नी है'।\n' A % B ' का अथष है ‘ A, B का भाई है'।\nननम्नमलखखत िें से ककस ववकल्प का अथष है 'J, R का वपता है'?",
+    "image": null,
+    "options_en": [
+      "C @ J % K $ M # R",
+      "C @ R $ K % M # J",
+      "C @ J $ K % M # R",
+      "J @ C $ K % M # R"
+    ],
+    "options_hi": [
+      "C @ J % K $ M # R",
+      "C @ R $ K % M # J",
+      "C @ J $ K % M # R",
+      "J @ C $ K % M # R"
+    ],
+    "answer": 2,
+    "explanation": "In 'C @ J $ K % M # R', J is the father of K, and K, M, R are siblings, making J the father of R."
+  },
+  {
+    "id": 40,
+    "question_en": "Eight friends, A, B, C, D, E, F, G and H, are sitting in two lines of four persons each. Both the lines are facing each other. A is facing D. E is to the immediate left of G. H is to the immediate right of B. C is facing G. F is facing H. B is to the immediate right of the person who is facing G. D is to the immediate left of F. Which four persons are sitting in the same line?",
+    "question_hi": "आठ मित्र, A, B, C, D, E, F, G और H, चार-चार व्यजक्तयों की दो पांजक्तयों िें बैठे हैं। दोनों रेखाएां एक-दूसरे का सािना कर रही हैं। A, D की ओर उन्िुख है। E, G के ठीक बा ओर है। H है B के ठीक दा ओर। C का िुख G की ओर है। F का िुख H की ओर है। B का िुख के ठीक दाईं ओर है वह व्यजक्त िो G की ओर उन्िुख है। D, F के ठीक बायें है। कौन से चार व्यजक्त हैं एक ही पांजक्त िें बैठे हैं?",
+    "image": null,
+    "options_en": ["A, B, C, H", "B, C, D, H", "A, C, F, G", "C, D, E, F"],
+    "options_hi": ["A, B, C, H", "B, C, D, H", "A, C, F, G", "C, D, E, F"],
+    "answer": 2,
+    "explanation": "The two parallel lines formed are (A, C, F, G) and (D, E, H, B)."
+  },
+  {
+    "id": 41,
+    "question_en": "Two orientations of the same box are shown. How will this box look when unfolded?",
+    "question_hi": "एक ही बॉक्स के दो ओररएांिेशन टदखाए र्ए हैं। खुला होने पर यह बॉक्स कैसा टदखेर्ा?",
+    "image": "images/q41_diagram.jpg",
+    "options_en": ["a", "b", "c", "d"],
+    "options_hi": ["a", "b", "c", "d"],
+    "answer": 0,
+    "explanation": "Unfolding the box based on opposite surface relations yields layout (a)."
+  },
+  {
+    "id": 42,
+    "question_en": "Select the number from among the given options that can replace the question mark (?) in the following series.\n14, 20, 34, 72, 182, ?",
+    "question_hi": "टदए र्ए ववकल्पों िें से वह सांख्या चुननए िो प्रचनवाचक चचन्ह को प्रनतमथावपत कर सके (?) ननम्नमलखखत श्रांखला िें।\n14, 20, 34, 72, 182, ?",
+    "image": null,
+    "options_en": ["308", "508", "580", "380"],
+    "options_hi": ["308", "508", "580", "380"],
+    "answer": 2,
+    "explanation": "Differences: 6, 14, 38, 110, 398? Pattern of differences multiplied by 3 - 4 gives next difference = 398. 182 + 398 = 580."
+  },
+  {
+    "id": 43,
+    "question_en": "Select the correct combination of mathematical signs that can sequentially replace the * signs and balance the given equation.\n54 * 36 * 12 * 18 * 24 * 24",
+    "question_hi": "र्खणतीय चचह्नों के उस सही सांयोिन का चयन करें िो *चचह्नों को क्रमिक रूप से प्रनतमथावपत कर सकता है और टदए र्ए सिीकरण को सांतुमलत कर सकता है।\n54 * 36 * 12 * 18 * 24 * 24",
+    "image": null,
+    "options_en": [
+      "÷, +, ×, −, =",
+      "÷, ×, −, +, =",
+      "÷, ×, +, −, =",
+      "+, ×, −, ÷, ="
+    ],
+    "options_hi": [
+      "÷, +, ×, −, =",
+      "÷, ×, −, +, =",
+      "÷, ×, +, −, =",
+      "+, ×, −, ÷, ="
+    ],
+    "answer": 1,
+    "explanation": "Substituting ÷, ×, −, +, =: 54 ÷ 36 × 12 - 18 + 24 = (1.5 × 12) - 18 + 24 = 18 - 18 + 24 = 24."
+  },
+  {
+    "id": 44,
+    "question_en": "In a group of 110 students, 23 students did not participate in any of the two games: Badminton and Chess. 45 students participated in Badminton and 61 students participated in Chess. How many students participated in Badminton only?",
+    "question_hi": "110 छात्रों के एक सिूह िें, 23 छात्रों ने दो खेलों िें से ककसी िें भी भार् नहीां मलया: बैडमिांिन और शतरांि। बैडमिांिन िें 45 और शतरांि िें 61 ववद्याचथषयों ने भार् मलया। केवल बैडमिांिन िें ककतने ववद्याचथषयों ने भार् मलया?",
+    "image": null,
+    "options_en": ["26", "18", "42", "28"],
+    "options_hi": ["26", "18", "42", "28"],
+    "answer": 2,
+    "explanation": "Total participating students = 110 - 23 = 87. Both games = 45 + 61 - 87 = 19. Badminton only = 45 - 19 = 26."
+  },
+  {
+    "id": 45,
+    "question_en": "Select the number from among the given options that can replace the question mark (?) in the following series.\n45, 47, 52, 62, 79, ?",
+    "question_hi": "टदए र्ए ववकल्पों िें से वह सांख्या चुननए िो ननम्नमलखखत श्ांरखला िें प्रचनवाचक चचन्ह (?) को प्रनतमथावपत कर सके।\n45, 47, 52, 62, 79, ?",
+    "image": null,
+    "options_en": ["85", "92", "105", "112"],
+    "options_hi": ["85", "92", "105", "112"],
+    "answer": 2,
+    "explanation": "Differences are 2, 5, 10, 17 (1^2+1, 2^2+1, 3^2+1, 4^2+1). Next difference = 5^2+1 = 26. 79 + 26 = 105."
+  },
+  {
+    "id": 46,
+    "question_en": "Select the letter-cluster from among the given options that can replace the question mark (?) in the following series.\nORGANS, SORGAN, SNORGA, ?, SNAGOR, SNAGRO",
+    "question_hi": "टदए र्ए ववकल्पों िें से उस अक्षर-सिूह को चुननए िो ननम्नमलखखत श्ांरखला िें प्रचनवाचक चचन्ह (?) को प्रनतमथावपत कर सकता है。\nORGANS, SORGAN, SNORGA, ?, SNAGOR, SNAGRO",
+    "image": null,
+    "options_en": ["SNAROG", "SNAORG", "SNOARG", "SNAOGR"],
+    "options_hi": ["SNAROG", "SNAORG", "SNOARG", "SNAOGR"],
+    "answer": 1,
+    "explanation": "Following the systematic shifting of letters in each step gives SNAORG."
+  }
+]
