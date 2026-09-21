@@ -1038,24 +1038,62 @@
             showView('view-instructions');
         }
 
-        // LOAD EXTERNAL JSON CAPABILITY
-        function loadExternalJSONPrompt() {
-            const url = prompt("Enter standard JSON file URL (or hosted GitHub URL):");
-            if (url) {
-                fetch(url)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data && data.questions && Array.isArray(data.questions)) {
-                            testQuestions = data.questions;
-                            alert(`Successfully loaded ${testQuestions.length} questions from JSON!`);
-                        } else {
-                            alert("Invalid JSON format. Please ensure it follows the recommended structure.");
-                        }
-                    })
-                    .catch(err => {
-                        alert("Error fetching JSON: " + err.message);
-                    });
+        // Fisher-Yates Shuffle Algorithm (Ensures completely random selection)
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
+// Automatically load questions from questions.json file
+function loadQuestionsFromJSON() {
+    fetch('questions.json')
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
             }
+            return res.json();
+        })
+        .then(data => {
+            // Handle both formats: direct array [...] OR object { questions: [...] }
+            let fullBank = Array.isArray(data) ? data : (data.questions || []);
+
+            if (fullBank.length === 0) {
+                alert("No questions found in questions.json file!");
+                return;
+            }
+
+            // 1. Shuffle all questions randomly
+            const randomizedBank = shuffleArray(fullBank);
+
+            // 2. Take only 25 unique questions
+            const TOTAL_TEST_QUESTIONS = 25;
+            const selectedQuestions = randomizedBank.slice(0, TOTAL_TEST_QUESTIONS);
+
+            // 3. Re-assign clean IDs (1 to 25) for UI & palette rendering
+            testQuestions = selectedQuestions.map((q, index) => ({
+                ...q,
+                id: index + 1
+            }));
+
+            console.log(`Loaded ${testQuestions.length} random questions out of ${fullBank.length} total questions.`);
+            
+            // Re-initialize instructions UI if applicable
+            if (typeof renderInstructionDetails === 'function') {
+                renderInstructionDetails();
+            }
+        })
+        .catch(err => {
+            console.error("Error fetching questions.json:", err);
+            alert("Could not load questions.json automatically. Make sure the file is uploaded in the same folder.");
+        });
+}
+
+// Trigger load automatically on page load
+document.addEventListener('DOMContentLoaded', loadQuestionsFromJSON);
         }
 
         // INITIALIZATION ON WINDOW LOAD
