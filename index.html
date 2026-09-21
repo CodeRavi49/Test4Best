@@ -2,1034 +2,296 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Free Online Test - CBT Platform</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            blue: '#0284c7',
-                            darkblue: '#0369a1',
-                            header: '#1e3a8a',
-                            lightbg: '#f8fafc',
-                        },
-                        status: {
-                            answered: '#22c55e',      /* Green */
-                            notanswered: '#ea580c',   /* Red/Orange pentagon */
-                            notvisited: '#e2e8f0',    /* Light grey */
-                            marked: '#7e22ce',        /* Purple circle */
-                            ansmarked: '#6b21a8',     /* Purple + tick */
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test4Best - Practice Test</title>
     <style>
+        :root {
+            --primary-color: #0056b3;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #cccccc;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9;
-            user-select: none;
-            -webkit-user-select: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
         }
 
-        /* Custom shape styling for palette items matching CBT layout */
-        .badge-polygon {
-            clip-path: polygon(50% 0%, 100% 25%, 100% 100%, 0% 100%, 0% 25%);
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Custom scrollbar for question palette */
-        ::-webkit-scrollbar {
-            width: 6px;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+
+        .controls {
+            display: flex;
+            gap: 10px;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
             border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
         }
 
-        /* Modal backdrop animation */
-        .modal-fade-in {
-            animation: fadeIn 0.2s ease-out forwards;
+        button:hover {
+            opacity: 0.9;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+
+        button:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .image-container {
+            margin: 15px 0 20px 0;
+            text-align: center;
+        }
+
+        .question-image {
+            max-width: 100%;
+            max-height: 350px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            display: none; /* Hidden by default if no image exists */
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .option-item {
+            background: #f9f9f9;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .option-item:hover {
+            background: #eef5ff;
+        }
+
+        .option-item input[type="radio"] {
+            margin-right: 12px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 flex flex-col min-h-screen">
+<body>
 
-    <!-- MAIN APPLICATION CONTAINER -->
-    <div id="app" class="flex-grow flex flex-col max-w-7xl mx-auto w-full bg-white shadow-md min-h-screen">
+<div class="container">
+    <div id="start-screen">
+        <h2>Welcome to Test4Best</h2>
+        <p>Click below to start a test with 25 randomly selected questions.</p>
+        <button id="start-btn">Start Test</button>
+    </div>
 
-        <!-- ========================================== -->
-        <!-- VIEW 1: INSTRUCTION PAGE                  -->
-        <!-- ========================================== -->
-        <div id="view-instructions" class="flex flex-col flex-grow p-4 md:p-6 max-w-3xl mx-auto w-full">
-            <header class="border-b pb-3 mb-4">
-                <h1 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
-                    <i class="fa-solid fa-graduation-cap text-sky-600"></i>
-                    Free Online Test
-                </h1>
-            </header>
-
-            <!-- Card 1: General Info -->
-            <div class="bg-sky-600 text-white p-4 rounded-t-xl font-semibold text-lg flex items-center justify-between shadow-sm">
-                <span>General Instructions</span>
-                <i class="fa-solid fa-file-lines"></i>
+    <div id="test-screen" class="hidden">
+        <div class="header">
+            <h3 id="q-number-title">Question No. 1</h3>
+            <div class="controls">
+                <button id="lang-toggle-btn">Switch to Hindi</button>
             </div>
+        </div>
+
+        <div id="question-box">
+            <!-- Question Text -->
+            <div id="question-text" class="question-text">Loading question...</div>
             
-            <div class="bg-sky-50 border border-sky-100 p-4 mb-5 rounded-b-xl flex items-start gap-4">
-                <div class="p-3 bg-sky-100 rounded-full text-sky-600">
-                    <i class="fa-regular fa-clock text-2xl"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-slate-800 text-lg">25 Questions in 15 mins</h3>
-                    <p class="text-slate-600 text-sm">The test will finish automatically after 15 mins</p>
-                </div>
+            <!-- Question Image Container -->
+            <div class="image-container">
+                <img id="question-image" class="question-image" src="" alt="Question Diagram">
             </div>
 
-            <!-- Card 2: Subject & Marks Details -->
-            <div class="bg-white border rounded-xl p-5 mb-5 shadow-sm space-y-3">
-                <h3 class="font-bold text-slate-800 text-lg border-b pb-2">Reasoning</h3>
-                <div class="space-y-2 text-sm text-slate-700">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 bg-sky-500 rounded-full"></span>
-                        <span>Questions: <strong class="text-slate-900">25</strong></span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                        <span>Correct Attempt: <strong class="text-emerald-600 font-bold">+2.0</strong></span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 bg-rose-500 rounded-full"></span>
-                        <span>Incorrect Attempt: <strong class="text-rose-600 font-bold">-0.5</strong></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Banner: Negative marking alert -->
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-center gap-3 text-amber-900 text-sm">
-                <i class="fa-solid fa-circle-info text-amber-600 text-xl flex-shrink-0"></i>
-                <span>There is no -ve marking for unattempted questions</span>
-            </div>
-
-            <!-- Navigation Rules -->
-            <div class="mb-6 space-y-3">
-                <h3 class="font-bold text-rose-600 text-lg flex items-center gap-1">
-                    <i class="fa-solid fa-angles-right"></i> Navigation Rules
-                </h3>
-                <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700 leading-relaxed">
-                    <li>Use <strong>Save & Next</strong> or <strong>Review & Next</strong> to save responses and navigate.</li>
-                    <li>You can also use the question numbers provided on the side palette to move quickly.</li>
-                    <li>You can bookmark any question to visit it later by clicking <strong>Review & Next</strong>.</li>
-                    <li>Submit the test at any time using the <strong>Submit Test</strong> button.</li>
-                </ul>
-            </div>
-
-            <!-- Default Language Selection -->
-            <div class="bg-slate-50 border rounded-xl p-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <label for="default-lang-select" class="font-semibold text-slate-700 text-sm">Select your default language:</label>
-                <select id="default-lang-select" onchange="changeLanguage(this.value)" class="border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-sky-500 w-full sm:w-48">
-                    <option value="en" selected>English</option>
-                    <option value="hi">Hindi (हिंदी)</option>
-                </select>
-            </div>
-
-            <!-- Controls bar -->
-            <div class="mt-auto pt-4 border-t flex flex-col sm:flex-row gap-3 items-center justify-between">
-                <button onclick="loadExternalJSONPrompt()" class="text-xs text-sky-600 underline hover:text-sky-800">
-                    <i class="fa-solid fa-cloud-arrow-down mr-1"></i> Load Custom JSON URL
-                </button>
-                <button onclick="startTest()" class="w-full sm:w-auto bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-10 rounded-xl shadow-lg transition-all text-center flex items-center justify-center gap-2">
-                    Start Mock <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
+            <!-- Options Container -->
+            <ul id="options-container" class="options-list"></ul>
         </div>
 
-        <!-- ========================================== -->
-        <!-- VIEW 2: TEST EXECUTION CANVAS             -->
-        <!-- ========================================== -->
-        <div id="view-test" class="hidden flex-col flex-grow">
-            
-            <!-- Top Navbar Header -->
-            <header class="bg-sky-700 text-white px-4 py-2 flex items-center justify-between shadow">
-                <div class="flex items-center gap-3">
-                    <span class="font-bold text-lg tracking-wide">Test4Best</span>
-                    <span class="text-xs bg-sky-800 px-2 py-0.5 rounded text-sky-200 hidden sm:inline-block">Free Mock Test</span>
-                </div>
-                <!-- Timer Display -->
-                <div class="bg-sky-900/80 px-3 py-1 rounded-lg border border-sky-500/30 flex items-center gap-2 font-mono text-base sm:text-lg font-semibold">
-                    <i class="fa-regular fa-clock text-amber-400"></i>
-                    <span>Time Left: <span id="timer-display" class="text-yellow-300">15:00</span></span>
-                </div>
-            </header>
-
-            <!-- Secondary Sub-header / Info Bar -->
-            <div class="bg-slate-100 border-b px-4 py-2 flex items-center justify-between text-xs sm:text-sm">
-                <div class="relative">
-                    <button onclick="toggleSectionInfoPopover()" class="bg-sky-600 text-white px-3 py-1 rounded font-medium flex items-center gap-1 hover:bg-sky-700">
-                        <span>Reasoning</span>
-                        <i class="fa-solid fa-circle-info text-xs"></i>
-                    </button>
-
-                    <!-- Section Info Popover -->
-                    <div id="section-info-popover" class="hidden absolute left-0 top-9 w-64 bg-white border border-slate-200 rounded-lg shadow-xl p-3 z-50 text-xs">
-                        <div class="font-bold border-b pb-1 mb-2 text-slate-800">Reasoning Summary</div>
-                        <div class="space-y-2">
-                            <div class="flex items-center justify-between">
-                                <span class="flex items-center gap-1.5"><span class="w-4 h-4 bg-emerald-500 rounded flex items-center justify-center text-white text-[10px]" id="count-ans-pop">0</span> Answered</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="flex items-center gap-1.5"><span class="w-4 h-4 bg-orange-600 text-white rounded flex items-center justify-center text-[10px]" id="count-notans-pop">0</span> Not Answered</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="flex items-center gap-1.5"><span class="w-4 h-4 bg-slate-300 text-slate-700 rounded flex items-center justify-center text-[10px]" id="count-notvis-pop">25</span> Not Visited</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="flex items-center gap-1.5"><span class="w-4 h-4 bg-purple-600 rounded-full text-white flex items-center justify-center text-[10px]" id="count-marked-pop">0</span> Marked for Review</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="flex items-center gap-1.5"><span class="w-4 h-4 bg-purple-800 rounded-full text-white flex items-center justify-center text-[10px]" id="count-ansmarked-pop">0</span> Answered & Marked</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Language Switcher & Mobile Menu Toggle -->
-                <div class="flex items-center gap-2">
-                    <span class="text-rose-600 font-semibold hidden md:inline">Type: MCQ | Marks: <span class="text-emerald-600">+2</span> <span class="text-rose-600">-0.5</span></span>
-                    <select id="lang-switch" onchange="changeLanguage(this.value)" class="border rounded px-2 py-1 text-xs bg-white">
-                        <option value="en">English</option>
-                        <option value="hi">Hindi</option>
-                    </select>
-                    <button onclick="togglePaletteDrawer()" class="lg:hidden bg-sky-100 text-sky-800 p-1.5 rounded border border-sky-300">
-                        <i class="fa-solid fa-border-all"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Content Area: Question + Sidebar Palette -->
-            <div class="flex-grow flex flex-col lg:flex-row relative overflow-hidden">
-                
-                <!-- Left Main Question Display Area -->
-                <main class="flex-grow p-4 md:p-6 overflow-y-auto flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between border-b pb-2 mb-4">
-                            <h2 class="font-bold text-slate-700 text-base md:text-lg" id="q-number-title">Question No. 1</h2>
-                            <span id="q-marking-info" class="text-xs font-medium text-slate-500">Marks: +2.0, -0.5</span>
-                        </div>
-
-                        <!-- Question Text Container -->
-                        <div id="q-text-container" class="text-slate-800 text-base md:text-lg mb-4 font-normal leading-relaxed">
-                            <!-- Question rendered dynamically -->
-                        </div>
-
-                        <!-- Question Image Attachment (if exists) -->
-                        <div id="q-image-container" class="mb-4 hidden">
-                            <img id="q-image" src="" alt="Question Diagram" class="max-w-full max-h-64 object-contain rounded border border-slate-200">
-                        </div>
-
-                        <!-- Options List -->
-                        <div id="q-options-container" class="space-y-3 mb-6">
-                            <!-- Options rendered dynamically -->
-                        </div>
-                    </div>
-
-                    <!-- Bottom Action Controls Bar -->
-                    <footer class="pt-4 border-t flex flex-wrap items-center justify-between gap-2 bg-white sticky bottom-0 z-10 py-2">
-                        <div class="flex items-center gap-2">
-                            <button onclick="handleReviewAndNext()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-2 rounded text-xs sm:text-sm font-semibold transition">
-                                Review & Next
-                            </button>
-                            <button onclick="handleClearResponse()" class="bg-slate-100 hover:bg-slate-200 text-slate-600 px-3 py-2 rounded text-xs sm:text-sm border border-slate-300 transition">
-                                Clear
-                            </button>
-                        </div>
-                        <button onclick="handleSaveAndNext()" class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2 rounded text-xs sm:text-sm font-bold shadow transition flex items-center gap-1">
-                            Save & Next <i class="fa-solid fa-chevron-right text-xs"></i>
-                        </button>
-                    </footer>
-                </main>
-
-                <!-- Right Question Palette (Desktop Persistent, Mobile Drawer) -->
-                <aside id="palette-drawer" class="fixed lg:relative inset-y-0 right-0 w-80 bg-sky-50 border-l border-sky-200 shadow-xl lg:shadow-none z-40 transform translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full">
-                    
-                    <!-- Palette Drawer Header -->
-                    <div class="bg-sky-600 text-white p-3 flex items-center justify-between font-bold text-sm">
-                        <span class="flex items-center gap-2">
-                            <i class="fa-solid fa-list-check"></i> SSC CGL Reasoning Mock
-                        </span>
-                        <button onclick="togglePaletteDrawer()" class="lg:hidden text-white hover:text-slate-200">
-                            <i class="fa-solid fa-xmark text-lg"></i>
-                        </button>
-                    </div>
-
-                    <!-- Status Legend Panel -->
-                    <div class="p-3 border-b bg-white grid grid-cols-2 gap-2 text-[11px] text-slate-700">
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-5 h-5 bg-emerald-500 text-white font-bold text-[10px] rounded flex items-center justify-center">11</span>
-                            <span>Answered</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-5 h-5 bg-orange-600 text-white font-bold text-[10px] badge-polygon flex items-center justify-center">7</span>
-                            <span>Not Answered</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-5 h-5 bg-slate-200 border border-slate-400 text-slate-700 font-bold text-[10px] rounded flex items-center justify-center">0</span>
-                            <span>Not Visited</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-5 h-5 bg-purple-600 text-white font-bold text-[10px] rounded-full flex items-center justify-center">0</span>
-                            <span>Marked for Review</span>
-                        </div>
-                        <div class="col-span-2 flex items-center gap-1.5">
-                            <span class="w-5 h-5 bg-purple-700 text-white font-bold text-[10px] rounded-full flex items-center justify-center relative">
-                                7<i class="fa-solid fa-check text-[7px] absolute -bottom-0.5 -right-0.5 bg-emerald-500 text-white rounded-full p-0.5"></i>
-                            </span>
-                            <span>Ans & Marked for Review</span>
-                        </div>
-                    </div>
-
-                    <!-- Questions Grid -->
-                    <div class="p-4 flex-grow overflow-y-auto">
-                        <div class="text-xs font-bold text-sky-900 mb-2">Choose a Question:</div>
-                        <div id="question-grid" class="grid grid-cols-4 gap-2.5">
-                            <!-- 1 to 25 buttons dynamically inserted -->
-                        </div>
-                    </div>
-
-                    <!-- Submit Test Button Panel -->
-                    <div class="p-3 border-t bg-white sticky bottom-0">
-                        <button onclick="promptSubmitModal()" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-2.5 rounded-lg shadow text-center transition">
-                            Submit Test
-                        </button>
-                    </div>
-                </aside>
-            </div>
-        </div>
-
-        <!-- ========================================== -->
-        <!-- VIEW 3: SCORECARD / RESULT SCREEN          -->
-        <!-- ========================================== -->
-        <div id="view-result" class="hidden flex-col flex-grow p-4 md:p-6 max-w-4xl mx-auto w-full">
-            <header class="mb-6 border-b pb-4 text-center sm:text-left">
-                <div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
-                    <span class="text-2xl">🏆</span>
-                    <h1 class="text-xl md:text-2xl font-bold text-slate-800">
-                        SSC CGL Reasoning Sectional Test Free Mock Scorecard
-                    </h1>
-                </div>
-                <p class="text-xs text-slate-500">Test Completed Successfully</p>
-            </header>
-
-            <!-- Main Score Table Card -->
-            <div class="bg-white rounded-xl shadow border overflow-hidden mb-8">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse min-w-[500px]">
-                        <thead>
-                            <tr class="bg-sky-900 text-white text-xs sm:text-sm uppercase tracking-wider">
-                                <th class="p-3 sm:p-4">Section</th>
-                                <th class="p-3 sm:p-4 text-center">Questions</th>
-                                <th class="p-3 sm:p-4 text-center">Attempts</th>
-                                <th class="p-3 sm:p-4 text-center text-emerald-300">Correct</th>
-                                <th class="p-3 sm:p-4 text-center text-rose-300">Incorrect</th>
-                                <th class="p-3 sm:p-4 text-center">Skipped</th>
-                                <th class="p-3 sm:p-4 text-center font-bold">Score</th>
-                                <th class="p-3 sm:p-4 text-center">Percentile</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-xs sm:text-sm divide-y text-slate-700">
-                            <tr class="hover:bg-slate-50 font-medium">
-                                <td class="p-3 sm:p-4 font-bold text-slate-800">Overall</td>
-                                <td class="p-3 sm:p-4 text-center">25</td>
-                                <td class="p-3 sm:p-4 text-center" id="res-attempts">17</td>
-                                <td class="p-3 sm:p-4 text-center text-emerald-600 font-bold" id="res-correct">8</td>
-                                <td class="p-3 sm:p-4 text-center text-rose-600 font-bold" id="res-incorrect">9</td>
-                                <td class="p-3 sm:p-4 text-center" id="res-skipped">8</td>
-                                <td class="p-3 sm:p-4 text-center font-extrabold text-sky-700 text-base" id="res-score">11.5</td>
-                                <td class="p-3 sm:p-4 text-center font-bold text-purple-700" id="res-percentile">88.5%</td>
-                            </tr>
-                            <tr class="bg-sky-50/50 hover:bg-sky-50 font-medium">
-                                <td class="p-3 sm:p-4 font-bold text-sky-900">Reasoning</td>
-                                <td class="p-3 sm:p-4 text-center">25</td>
-                                <td class="p-3 sm:p-4 text-center" id="res-sec-attempts">17</td>
-                                <td class="p-3 sm:p-4 text-center text-emerald-600 font-bold" id="res-sec-correct">8</td>
-                                <td class="p-3 sm:p-4 text-center text-rose-600 font-bold" id="res-sec-incorrect">9</td>
-                                <td class="p-3 sm:p-4 text-center" id="res-sec-skipped">8</td>
-                                <td class="p-3 sm:p-4 text-center font-extrabold text-sky-700 text-base" id="res-sec-score">11.5</td>
-                                <td class="p-3 sm:p-4 text-center font-bold text-purple-700" id="res-sec-percentile">88.5%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
-                <button onclick="restartTest()" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold px-5 py-2.5 rounded-lg text-sm shadow flex items-center gap-2">
-                    <i class="fa-solid fa-rotate-right"></i> Retake Test
-                </button>
-                <button onclick="toggleSolutionsReview()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-lg text-sm shadow flex items-center gap-2">
-                    <i class="fa-solid fa-square-check"></i> Review Detailed Solutions
-                </button>
-            </div>
-
-            <!-- Solution & Answer Key Section -->
-            <div id="solutions-container" class="hidden space-y-6">
-                <h2 class="text-xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
-                    <i class="fa-solid fa-magnifying-glass-chart text-sky-600"></i> Question Solutions & Explanations
-                </h2>
-                <div id="solutions-list" class="space-y-4">
-                    <!-- Dynamic solutions generated here -->
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- ========================================== -->
-    <!-- MODALS & OVERLAYS                         -->
-    <!-- ========================================== -->
-
-    <!-- Confirmation Modal -->
-    <div id="modal-confirm" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden modal-fade-in border">
-            <div class="bg-slate-50 px-5 py-4 border-b flex items-center justify-between">
-                <h3 class="font-bold text-slate-800 text-lg">Are you Sure?</h3>
-                <button onclick="closeConfirmModal()" class="text-slate-400 hover:text-slate-600">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-            <div class="p-6 text-slate-700 text-sm">
-                Are you sure you want to submit the mock?
-            </div>
-            <div class="bg-slate-50 px-5 py-3 border-t flex items-center justify-end gap-3">
-                <button onclick="executeSubmission()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-4 py-2 rounded-lg text-sm transition">
-                    Submit Mock
-                </button>
-                <button onclick="closeConfirmModal()" class="bg-rose-500 hover:bg-rose-600 text-white font-semibold px-4 py-2 rounded-lg text-sm transition">
-                    Close
-                </button>
-            </div>
+        <div class="navigation">
+            <button id="prev-btn">Previous</button>
+            <button id="next-btn">Next</button>
         </div>
     </div>
+</div>
 
-    <!-- Waiting Overlay -->
-    <div id="modal-waiting" class="hidden fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden modal-fade-in border">
-            <div class="bg-slate-50 px-5 py-3 border-b">
-                <h3 class="font-bold text-slate-800 text-base">Submitting</h3>
-            </div>
-            <div class="p-6">
-                <div class="bg-sky-50 border border-sky-100 rounded-lg p-4 text-sky-800 text-sm flex items-center gap-3">
-                    <i class="fa-solid fa-spinner fa-spin text-sky-600 text-xl"></i>
-                    <span>Please wait while we are saving your attempt</span>
-                </div>
-            </div>
-            <div class="bg-slate-50 px-5 py-3 border-t flex justify-end">
-                <button disabled class="bg-emerald-300 text-white font-semibold px-4 py-2 rounded-lg text-sm cursor-not-allowed">
-                    Submit Mock
-                </button>
-            </div>
-        </div>
-    </div>
+<script>
+    let allQuestions = [];
+    let testQuestions = [];
+    let currentQuestionIndex = 0;
+    let currentLang = 'en'; // Default language ('en' or 'hi')
+    let userResponses = {};
 
-    <!-- ========================================== -->
-    <!-- JAVASCRIPT APPLICATION LOGIC              -->
-    <!-- ========================================== -->
-    <script>
+    // Load questions on initial page load
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchQuestions();
+
+        document.getElementById('start-btn').addEventListener('click', startTest);
+        document.getElementById('lang-toggle-btn').addEventListener('click', toggleLanguage);
+        document.getElementById('prev-btn').addEventListener('click', showPreviousQuestion);
+        document.getElementById('next-btn').addEventListener('click', showNextQuestion);
+    });
+
+    async function fetchQuestions() {
+        try {
+            const response = await fetch('questions.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            allQuestions = await response.json();
+            console.log(`Loaded ${allQuestions.length} total questions.`);
+        } catch (error) {
+            console.error("Failed to load questions.json:", error);
+            alert("Error loading questions. Please ensure you are running this app via a local web server (e.g. Live Server or python -m http.server).");
+        }
+    }
+
+    function startTest() {
+        if (!allQuestions || allQuestions.length === 0) {
+            alert("Questions are not loaded yet. Please wait or refresh the page.");
+            return;
+        }
+
+        // Randomly pick 25 questions from the loaded dataset
+        const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
+        testQuestions = shuffled.slice(0, 25);
         
-        // SAMPLE DEFAULT MOCK TEST DATA (25 Questions Fallback)
-        const sampleQuestionsData = [
-            {
-                id: 1,
-                text: {
-                    en: "Select the related word from given alternatives:\nLion : Cub :: Hen : ?",
-                    hi: "दिए गए विकल्पों में से संबंधित शब्दों/अक्षरों/संख्याओं का चयन करें:\nशेर : शावक :: मुर्गी :"
-                },
-                imageUrl: "",
-                options: {
-                    en: ["Chick", "Calf", "Cock", "Rooster"],
-                    hi: ["मुर्गी का बच्चा", "गाय का बच्चा", "मुर्गा", "मुर्ग़ा"]
-                },
-                correctIndex: 0,
-                explanation: "A young lion is called a cub, and a young hen is called a chick."
-            },
-            {
-                id: 2,
-                text: {
-                    en: "In each of the following questions, select the related number from the given alternatives:\n14 : 5 :: 17 : ?",
-                    hi: "निम्नलिखित प्रश्नों में से प्रत्येक में, दिए गए विकल्पों में से संबंधित संख्या को चुनिए:\n14 : 5 :: 17 : ?"
-                },
-                imageUrl: "",
-                options: {
-                    en: ["8", "9", "12", "7"],
-                    hi: ["8", "9", "12", "7"]
-                },
-                correctIndex: 0,
-                explanation: "Logic: (14 - 4) / 2 = 5. Similarly, (17 - 1) / 2 = 8."
-            },
-            {
-                id: 3,
-                text: {
-                    en: "Select the odd letter pair from the given options.",
-                    hi: "दिए गए विकल्पों में से विषम अक्षर युग्म को चुनिए।"
-                },
-                imageUrl: "",
-                options: {
-                    en: ["CX - EV", "HS - IR", "LO - MN", "AZ - BY"],
-                    hi: ["CX - EV", "HS - IR", "LO - MN", "AZ - BY"]
-                },
-                correctIndex: 1,
-                explanation: "Opposite letter pairs: C-X, E-V are opposites. H-S is opposite, but I-R is also opposite."
-            },
-            {
-                id: 4,
-                text: {
-                    en: "Which number will replace the question mark (?) in the following series?\n12, 23, 45, 89, ?",
-                    hi: "निम्नलिखित श्रृंखला में प्रश्न चिह्न (?) को कौन सी संख्या प्रतिस्थापित करेगी?\n12, 23, 45, 89, ?"
-                },
-                imageUrl: "",
-                options: {
-                    en: ["175", "177", "168", "182"],
-                    hi: ["175", "177", "168", "182"]
-                },
-                correctIndex: 1,
-                explanation: "Pattern: x2 - 1. (12*2)-1 = 23; (23*2)-1 = 45; (45*2)-1 = 89; (89*2)-1 = 177."
-            },
-            {
-                id: 5,
-                text: {
-                    en: "If 'A' denotes 'addition', 'B' denotes 'multiplication', 'C' denotes 'subtraction', and 'D' denotes 'division', then what will be the value of:\n25 B 4 A 12 D 3 C 8 =",
-                    hi: "यदि 'A' का अर्थ 'जोड़', 'B' का अर्थ 'गुणा', 'C' का अर्थ 'घटाव' और 'D' का अर्थ 'भाग' है, तो निम्नलिखित का मान क्या होगा:\n25 B 4 A 12 D 3 C 8 ="
-                },
-                imageUrl: "",
-                options: {
-                    en: ["96", "94", "100", "98"],
-                    hi: ["96", "94", "100", "98"]
-                },
-                correctIndex: 0,
-                explanation: "Equation: 25 * 4 + 12 / 3 - 8 = 100 + 4 - 8 = 96."
-            }
-        ];
+        currentQuestionIndex = 0;
+        userResponses = {};
 
-        // Fill remaining questions to make total 25
-        for (let i = 6; i <= 25; i++) {
-            sampleQuestionsData.push({
-                id: i,
-                text: {
-                    en: `Sample Reasoning Question No. ${i}: Choose the correct logical option based on relationship rules.`,
-                    hi: `नमूना तर्क प्रश्न संख्या ${i}: संबंध नियमों के आधार पर सही तार्किक विकल्प चुनें।`
-                },
-                imageUrl: i % 7 === 0 ? "https://placehold.co/400x200/e2e8f0/1e293b?text=Sample+Diagram+Q" + i : "",
-                options: {
-                    en: [`Option A for Q${i}`, `Option B for Q${i}`, `Option C for Q${i}`, `Option D for Q${i}`],
-                    hi: [`विकल्प A - प्रश्न ${i}`, `विकल्प B - प्रश्न ${i}`, `विकल्प C - प्रश्न ${i}`, `विकल्प D - प्रश्न ${i}`]
-                },
-                correctIndex: (i % 4),
-                explanation: `Detailed explanation for question ${i}. Option ${(i % 4) + 1} satisfies all logic rules.`
-            });
+        document.getElementById('start-screen').classList.add('hidden');
+        document.getElementById('test-screen').classList.remove('hidden');
+
+        renderCurrentQuestion();
+    }
+
+    // RENDER QUESTION DISPLAY
+    function renderCurrentQuestion() {
+        if (!testQuestions || testQuestions.length === 0) return;
+
+        const q = testQuestions[currentQuestionIndex];
+        if (!q) {
+            console.error(`No question found at index ${currentQuestionIndex}`);
+            return;
         }
 
-        // STATE MANAGEMENT VARIABLES
-        let currentLang = 'en';
-        let currentQuestionIndex = 0;
-        let testQuestions = [...sampleQuestionsData];
-        let totalDurationSeconds = 15 * 60; // 15 Minutes
-        let timerInterval = null;
-        let timeRemaining = totalDurationSeconds;
+        // 1. Update Title Header
+        document.getElementById('q-number-title').innerText = `Question No. ${currentQuestionIndex + 1} of ${testQuestions.length}`;
 
-        let userResponses = {}; 
+        // 2. Extract Text & Options based on current language selection
+        const questionText = (currentLang === 'hi') ? (q.question_hi || q.question_en) : q.question_en;
+        const optionsList = (currentLang === 'hi') ? (q.options_hi || q.options_en) : q.options_en;
 
-        function initResponseState() {
-            userResponses = {};
-            testQuestions.forEach((q, index) => {
-                userResponses[q.id] = {
-                    selectedOption: null,
-                    status: index === 0 ? 'notanswered' : 'notvisited'
-                };
-            });
+        // Render Question Text
+        document.getElementById('question-text').innerText = questionText;
+
+        // 3. Handle Question Image (e.g., "images/q41_diagram.jpg")
+        const imgElement = document.getElementById('question-image');
+        if (q.image_url && typeof q.image_url === 'string' && q.image_url.trim() !== '') {
+            imgElement.src = q.image_url;
+            imgElement.style.display = 'inline-block';
+        } else {
+            imgElement.src = '';
+            imgElement.style.display = 'none'; // Completely collapse space if no image is present
         }
 
-        // VIEW CHANGING FUNCTION
-        function showView(viewId) {
-            document.getElementById('view-instructions').classList.add('hidden');
-            document.getElementById('view-test').classList.add('hidden');
-            document.getElementById('view-result').classList.add('hidden');
+        // 4. Render Options List
+        const optionsContainer = document.getElementById('options-container');
+        optionsContainer.innerHTML = '';
 
-            document.getElementById('view-test').classList.remove('flex');
-            document.getElementById('view-result').classList.remove('flex');
+        if (optionsList && Array.isArray(optionsList)) {
+            optionsList.forEach((optText, idx) => {
+                const li = document.createElement('li');
+                li.className = 'option-item';
 
-            const target = document.getElementById(viewId);
-            if (viewId === 'view-test' || viewId === 'view-result') {
-                target.classList.remove('hidden');
-                target.classList.add('flex');
-            } else {
-                target.classList.remove('hidden');
-            }
-        }
+                const isChecked = userResponses[q.id] === idx;
 
-        // LANGUAGE SWITCHER
-        function changeLanguage(lang) {
-            currentLang = lang;
-            document.getElementById('default-lang-select').value = lang;
-            document.getElementById('lang-switch').value = lang;
-            renderCurrentQuestion();
-        }
-
-        // START MOCK TEST
-        function startTest() {
-            initResponseState();
-            currentQuestionIndex = 0;
-            timeRemaining = totalDurationSeconds;
-            
-            showView('view-test');
-            renderQuestionGrid();
-            renderCurrentQuestion();
-            startTimer();
-        }
-
-        // TIMER LOGIC
-        function startTimer() {
-            clearInterval(timerInterval);
-            updateTimerDisplay();
-
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-                updateTimerDisplay();
-
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    autoSubmitTest();
-                }
-            }, 1000);
-        }
-
-        function updateTimerDisplay() {
-            const mins = Math.floor(timeRemaining / 60);
-            const secs = timeRemaining % 60;
-            const formattedMins = String(mins).padStart(2, '0');
-            const formattedSecs = String(secs).padStart(2, '0');
-            document.getElementById('timer-display').innerText = `${formattedMins} : ${formattedSecs}`;
-        }
-
-        // RENDER QUESTION DISPLAY
-        function renderCurrentQuestion() {
-            const q = testQuestions[currentQuestionIndex];
-            const resp = userResponses[q.id];
-
-            document.getElementById('q-number-title').innerText = `Question No. ${currentQuestionIndex + 1}`;
-
-            const textContent = q.text[currentLang] || q.text['en'];
-            document.getElementById('q-text-container').innerText = textContent;
-
-            const imgContainer = document.getElementById('q-image-container');
-            const imgElem = document.getElementById('q-image');
-            if (q.imageUrl && q.imageUrl.trim() !== "") {
-                imgElem.src = q.imageUrl;
-                imgContainer.classList.remove('hidden');
-            } else {
-                imgContainer.classList.add('hidden');
-            }
-
-            const optionsContainer = document.getElementById('q-options-container');
-            optionsContainer.innerHTML = '';
-
-            const opts = q.options[currentLang] || q.options['en'];
-            opts.forEach((optText, optIdx) => {
-                const isSelected = resp.selectedOption === optIdx;
-                
-                const optButton = document.createElement('label');
-                optButton.className = `flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer transition-all ${
-                    isSelected ? 'bg-sky-50 border-sky-600 font-medium text-sky-950 shadow-sm' : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-800'
-                }`;
-
-                optButton.innerHTML = `
-                    <input type="radio" name="question_option" value="${optIdx}" ${isSelected ? 'checked' : ''} onchange="selectOption(${optIdx})" class="w-4 h-4 text-sky-600 focus:ring-sky-500">
-                    <span class="text-sm sm:text-base">${optText}</span>
-                `;
-                optionsContainer.appendChild(optButton);
-            });
-
-            if (resp.status === 'notvisited') {
-                resp.status = 'notanswered';
-            }
-
-            updateCountsAndPalette();
-        }
-
-        function selectOption(optionIdx) {
-            const q = testQuestions[currentQuestionIndex];
-            userResponses[q.id].selectedOption = optionIdx;
-            renderCurrentQuestion();
-        }
-
-        function handleClearResponse() {
-            const q = testQuestions[currentQuestionIndex];
-            userResponses[q.id].selectedOption = null;
-            if (userResponses[q.id].status === 'answered') {
-                userResponses[q.id].status = 'notanswered';
-            } else if (userResponses[q.id].status === 'ansmarked') {
-                userResponses[q.id].status = 'marked';
-            }
-            renderCurrentQuestion();
-        }
-
-        function handleSaveAndNext() {
-            const q = testQuestions[currentQuestionIndex];
-            const resp = userResponses[q.id];
-
-            if (resp.selectedOption !== null) {
-                resp.status = 'answered';
-            } else {
-                resp.status = 'notanswered';
-            }
-
-            goToNextQuestion();
-        }
-
-        function handleReviewAndNext() {
-            const q = testQuestions[currentQuestionIndex];
-            const resp = userResponses[q.id];
-
-            if (resp.selectedOption !== null) {
-                resp.status = 'ansmarked';
-            } else {
-                resp.status = 'marked';
-            }
-
-            goToNextQuestion();
-        }
-
-        function goToNextQuestion() {
-            if (currentQuestionIndex < testQuestions.length - 1) {
-                currentQuestionIndex++;
-                renderCurrentQuestion();
-            } else {
-                promptSubmitModal();
-            }
-        }
-
-        function renderQuestionGrid() {
-            const grid = document.getElementById('question-grid');
-            grid.innerHTML = '';
-
-            testQuestions.forEach((q, idx) => {
-                const btn = document.createElement('button');
-                btn.id = `palette-btn-${q.id}`;
-                btn.onclick = () => jumpToQuestion(idx);
-                grid.appendChild(btn);
-            });
-
-            updateCountsAndPalette();
-        }
-
-        function jumpToQuestion(idx) {
-            currentQuestionIndex = idx;
-            renderCurrentQuestion();
-            document.getElementById('palette-drawer').classList.add('translate-x-full');
-        }
-
-        function updateCountsAndPalette() {
-            let countAns = 0;
-            let countNotAns = 0;
-            let countNotVis = 0;
-            let countMarked = 0;
-            let countAnsMarked = 0;
-
-            testQuestions.forEach((q, idx) => {
-                const resp = userResponses[q.id];
-                const btn = document.getElementById(`palette-btn-${q.id}`);
-                if (!btn) return;
-
-                const isCurrent = idx === currentQuestionIndex;
-                let badgeClass = "w-10 h-10 font-bold text-sm flex items-center justify-center transition-all relative ";
-
-                if (isCurrent) {
-                    badgeClass += "ring-2 ring-sky-600 ring-offset-2 ";
-                }
-
-                switch (resp.status) {
-                    case 'answered':
-                        countAns++;
-                        badgeClass += "bg-emerald-500 text-white rounded-md shadow-sm";
-                        btn.innerHTML = `${idx + 1}`;
-                        break;
-
-                    case 'notanswered':
-                        countNotAns++;
-                        badgeClass += "bg-orange-600 text-white badge-polygon shadow-sm";
-                        btn.innerHTML = `${idx + 1}`;
-                        break;
-
-                    case 'marked':
-                        countMarked++;
-                        badgeClass += "bg-purple-600 text-white rounded-full shadow-sm";
-                        btn.innerHTML = `${idx + 1}`;
-                        break;
-
-                    case 'ansmarked':
-                        countAnsMarked++;
-                        badgeClass += "bg-purple-700 text-white rounded-full shadow-sm";
-                        btn.innerHTML = `${idx + 1}<i class="fa-solid fa-check text-[8px] absolute -bottom-0.5 -right-0.5 bg-emerald-500 text-white rounded-full p-0.5"></i>`;
-                        break;
-
-                    case 'notvisited':
-                    default:
-                        countNotVis++;
-                        badgeClass += "bg-slate-200 border border-slate-300 text-slate-700 rounded-md";
-                        btn.innerHTML = `${idx + 1}`;
-                        break;
-                }
-
-                btn.className = badgeClass;
-            });
-
-            document.getElementById('count-ans-pop').innerText = countAns;
-            document.getElementById('count-notans-pop').innerText = countNotAns;
-            document.getElementById('count-notvis-pop').innerText = countNotVis;
-            document.getElementById('count-marked-pop').innerText = countMarked;
-            document.getElementById('count-ansmarked-pop').innerText = countAnsMarked;
-        }
-
-        function togglePaletteDrawer() {
-            const drawer = document.getElementById('palette-drawer');
-            drawer.classList.toggle('translate-x-full');
-        }
-
-        function toggleSectionInfoPopover() {
-            const popover = document.getElementById('section-info-popover');
-            popover.classList.toggle('hidden');
-        }
-
-        function promptSubmitModal() {
-            document.getElementById('modal-confirm').classList.remove('hidden');
-        }
-
-        function closeConfirmModal() {
-            document.getElementById('modal-confirm').classList.add('hidden');
-        }
-
-        function executeSubmission() {
-            closeConfirmModal();
-            clearInterval(timerInterval);
-
-            document.getElementById('modal-waiting').classList.remove('hidden');
-
-            setTimeout(() => {
-                document.getElementById('modal-waiting').classList.add('hidden');
-                calculateAndShowResults();
-            }, 1800);
-        }
-
-        function autoSubmitTest() {
-            clearInterval(timerInterval);
-            document.getElementById('modal-waiting').classList.remove('hidden');
-            setTimeout(() => {
-                document.getElementById('modal-waiting').classList.add('hidden');
-                calculateAndShowResults();
-            }, 1500);
-        }
-
-        function calculateAndShowResults() {
-            let correct = 0;
-            let incorrect = 0;
-            let skipped = 0;
-
-            testQuestions.forEach(q => {
-                const resp = userResponses[q.id];
-                if (resp.selectedOption !== null) {
-                    if (resp.selectedOption === q.correctIndex) {
-                        correct++;
-                    } else {
-                        incorrect++;
-                    }
-                } else {
-                    skipped++;
-                }
-            });
-
-            const attempts = correct + incorrect;
-            const totalScore = (correct * 2.0) - (incorrect * 0.5);
-            const scoreFormatted = totalScore.toFixed(1);
-
-            const percentile = Math.min(99.8, Math.max(10.0, (totalScore / 50) * 100 + 35)).toFixed(2);
-
-            document.getElementById('res-attempts').innerText = attempts;
-            document.getElementById('res-correct').innerText = correct;
-            document.getElementById('res-incorrect').innerText = incorrect;
-            document.getElementById('res-skipped').innerText = skipped;
-            document.getElementById('res-score').innerText = scoreFormatted;
-            document.getElementById('res-percentile').innerText = `${percentile}%`;
-
-            document.getElementById('res-sec-attempts').innerText = attempts;
-            document.getElementById('res-sec-correct').innerText = correct;
-            document.getElementById('res-sec-incorrect').innerText = incorrect;
-            document.getElementById('res-sec-skipped').innerText = skipped;
-            document.getElementById('res-sec-score').innerText = scoreFormatted;
-            document.getElementById('res-sec-percentile').innerText = `${percentile}%`;
-
-            renderSolutionsList();
-            showView('view-result');
-        }
-
-        function renderSolutionsList() {
-            const list = document.getElementById('solutions-list');
-            list.innerHTML = '';
-
-            testQuestions.forEach((q, idx) => {
-                const resp = userResponses[q.id];
-                const userSelected = resp.selectedOption;
-                const isCorrect = userSelected === q.correctIndex;
-                const isUnattempted = userSelected === null;
-
-                const card = document.createElement('div');
-                card.className = `p-4 sm:p-5 rounded-xl border bg-white shadow-sm space-y-3 ${
-                    isUnattempted ? 'border-slate-200' : (isCorrect ? 'border-emerald-300 bg-emerald-50/20' : 'border-rose-300 bg-rose-50/20')
-                }`;
-
-                const optionsList = (q.options[currentLang] || q.options['en']).map((opt, oIdx) => {
-                    let optStyle = "border-slate-200 bg-white text-slate-700";
-                    let badge = "";
-
-                    if (oIdx === q.correctIndex) {
-                        optStyle = "border-emerald-500 bg-emerald-100 text-emerald-950 font-semibold";
-                        badge = `<span class="text-xs bg-emerald-600 text-white px-2 py-0.5 rounded font-bold ml-auto">Correct Answer</span>`;
-                    } else if (oIdx === userSelected && !isCorrect) {
-                        optStyle = "border-rose-500 bg-rose-100 text-rose-950 font-semibold";
-                        badge = `<span class="text-xs bg-rose-600 text-white px-2 py-0.5 rounded font-bold ml-auto">Your Choice</span>`;
-                    }
-
-                    return `
-                        <div class="p-2.5 rounded-lg border text-sm flex items-center justify-between ${optStyle}">
-                            <span>${opt}</span>
-                            ${badge}
-                        </div>
-                    `;
-                }).join('');
-
-                card.innerHTML = `
-                    <div class="flex items-center justify-between border-b pb-2">
-                        <span class="font-bold text-slate-800">Q${idx + 1}.</span>
-                        <span class="text-xs px-2.5 py-1 rounded-full font-bold ${
-                            isUnattempted ? 'bg-slate-200 text-slate-700' : (isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800')
-                        }">
-                            ${isUnattempted ? 'Skipped' : (isCorrect ? 'Correct (+2.0)' : 'Incorrect (-0.5)')}
-                        </span>
-                    </div>
-                    <p class="font-medium text-slate-900 text-sm sm:text-base">${q.text[currentLang] || q.text['en']}</p>
-                    <div class="space-y-2 pt-2">${optionsList}</div>
-                    <div class="mt-3 p-3 bg-slate-100 rounded-lg text-xs sm:text-sm text-slate-700">
-                        <strong class="text-slate-900 block mb-1">Explanation:</strong>
-                        ${q.explanation}
-                    </div>
+                li.innerHTML = `
+                    <label style="width: 100%; cursor: pointer; display: flex; align-items: center;">
+                        <input type="radio" name="option" value="${idx}" ${isChecked ? 'checked' : ''}>
+                        <span>${String.fromCharCode(65 + idx)}. ${optText}</span>
+                    </label>
                 `;
 
-                list.appendChild(card);
+                li.querySelector('input').addEventListener('change', () => {
+                    userResponses[q.id] = idx;
+                });
+
+                optionsContainer.appendChild(li);
             });
         }
 
-        function toggleSolutionsReview() {
-            const container = document.getElementById('solutions-container');
-            container.classList.toggle('hidden');
-            if (!container.classList.contains('hidden')) {
-                container.scrollIntoView({ behavior: 'smooth' });
-            }
+        // 5. Update Navigation Buttons
+        document.getElementById('prev-btn').disabled = (currentQuestionIndex === 0);
+        document.getElementById('next-btn').innerText = (currentQuestionIndex === testQuestions.length - 1) ? 'Finish' : 'Next';
+    }
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'en') ? 'hi' : 'en';
+        document.getElementById('lang-toggle-btn').innerText = (currentLang === 'en') ? 'Switch to Hindi' : 'Switch to English';
+        renderCurrentQuestion();
+    }
+
+    function showPreviousQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            renderCurrentQuestion();
         }
+    }
 
-        function restartTest() {
-            showView('view-instructions');
+    function showNextQuestion() {
+        if (currentQuestionIndex < testQuestions.length - 1) {
+            currentQuestionIndex++;
+            renderCurrentQuestion();
+        } else {
+            alert("Test completed! Thank you.");
         }
-
-        // Fisher-Yates Shuffle Algorithm
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
-
-        // Automatically load questions from questions.json file
-        function loadQuestionsFromJSON() {
-            fetch('questions.json')
-                .then(res => {
-                    if (!res.ok) {
-                        throw new Error(`HTTP error! Status: ${res.status}`);
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    let fullBank = Array.isArray(data) ? data : (data.questions || []);
-
-                    if (fullBank.length === 0) {
-                        console.warn("questions.json is empty. Falling back to built-in sample questions.");
-                        return;
-                    }
-
-                    const randomizedBank = shuffleArray(fullBank);
-                    const TOTAL_TEST_QUESTIONS = 25;
-                    const selectedQuestions = randomizedBank.slice(0, TOTAL_TEST_QUESTIONS);
-
-                    testQuestions = selectedQuestions.map((q, index) => ({
-                        ...q,
-                        id: index + 1
-                    }));
-
-                    console.log(`Loaded ${testQuestions.length} random questions out of ${fullBank.length} total questions.`);
-                })
-                .catch(err => {
-                    console.warn("Could not load questions.json automatically. Using built-in sample questions.", err);
-                });
-        }
-
-        // Custom URL Loader Prompt Function
-        function loadExternalJSONPrompt() {
-            const url = prompt("Enter the direct URL of your questions.json file:");
-            if (!url) return;
-
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    let fullBank = Array.isArray(data) ? data : (data.questions || []);
-                    if (fullBank.length === 0) {
-                        alert("No questions found at that URL!");
-                        return;
-                    }
-                    const randomizedBank = shuffleArray(fullBank);
-                    testQuestions = randomizedBank.slice(0, 25).map((q, index) => ({
-                        ...q,
-                        id: index + 1
-                    }));
-                    alert(`Successfully loaded ${testQuestions.length} questions! Click 'Start Mock' to begin.`);
-                })
-                .catch(err => {
-                    alert("Failed to fetch JSON from the provided URL. Check CORS or URL accuracy.");
-                    console.error(err);
-                });
-        }
-
-        // DOM READY INITIALIZATION
-        document.addEventListener('DOMContentLoaded', () => {
-            loadQuestionsFromJSON();
-            showView('view-instructions');
-        });
-    </script>
+    }
+</script>
 </body>
 </html>
